@@ -1,14 +1,9 @@
-.row {
-    display: flex;
-}
-
-input {
-    height: 15px;
-    margin-top: 15px;
-}
-
 .container {
     display: flex;
+}
+
+p {
+    text-align: start;
 }
 
 .thblock {
@@ -18,9 +13,9 @@ input {
 .inner-con2 {
     display: flex;
     align-items: center;
-    margin: 10px;
 }
 
 .inner-con3 {
     display: flex;
+    align-items: center;
 }

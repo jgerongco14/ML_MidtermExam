@@ -11,16 +11,130 @@
 
 <body>
     <div class="container">
+        <p>
+            Before we start I just want you to know that our original dataset is already converted into numeric data. So to understand further I will translate every column that we will use in order to determine if our test data has no diabetes, prediabetes or has
+            diabetes. <br><br> Diabetes_12 0 = no diabetes 1 = prediabetes 2 = diabetes
+            <br><br> HighBp 0 = no high BP 1 = high BP
+            <br><br> CholCheck 0 = no cholesterol check in 5 years 1 = yes cholesterol check in 5 years
+            <br><br> Smoker Have you smoked at least 100 cigarettes in your entire life? 0 = no 1 = yes
+            <br><br> Stroke 0 = no 1 = yes
+            <br><br> HeartDiseaseorAttack 0 = no 1 = yes
+            <br><br> PhysActivity 0 = no 1 = yes
+            <br><br> Fruits Consume Fruit 1 or more times per day 0 = no 1 = yes
+            <br><br> Veggies Consume Fruit 1 or more times per day 0 = no 1 = yes
+            <br><br> HvyAlcoholConsump Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week) 0 = no 1 = yes
+            <br><br> BMI 0 = underweight 1 = normal 2 = overweight 3 = obese
+        </p>
+    </div>
+
+    <Script>
+        function select() {
+
+            ans = [];
+
+            var highbp = document.getElementsByName("bp");
+            if (highbp[0].checked) {
+                ans[0] = (1)
+            } else if (highbp[1].checked) {
+                ans[0] = (0)
+            }
+            var highcol = document.getElementsByName("hcol");
+            if (highcol[0].checked) {
+                ans[1] = (1)
+            } else if (highcol[1].checked) {
+                ans[1] = (0)
+            }
+            var colcheck = document.getElementsByName("colcheck");
+            if (colcheck[0].checked) {
+                ans[2] = (1)
+            } else if (colcheck[1].checked) {
+                ans[2] = (0)
+            }
+            var smoker = document.getElementsByName("smoker");
+            if (smoker[0].checked) {
+                ans[3] = (1)
+            } else if (smoker[1].checked) {
+                ans[3] = (0)
+            }
+            var stroke = document.getElementsByName("stroke");
+            if (stroke[0].checked) {
+                ans[4] = (1)
+            } else if (stroke[1].checked) {
+                ans[4] = (0)
+            }
+            var heartattk = document.getElementsByName("heartattk");
+            if (heartattk[0].checked) {
+                ans[5] = (1)
+            } else if (heartattk[1].checked) {
+                ans[5] = (0)
+            }
+            var phyact = document.getElementsByName("phyact");
+            if (phyact[0].checked) {
+                ans[6] = (1)
+            } else if (phyact[1].checked) {
+                ans[6] = (0)
+            }
+            var fruits = document.getElementsByName("fruits");
+            if (fruits[0].checked) {
+                ans[7] = (1)
+            } else if (fruits[1].checked) {
+                ans[7] = (0)
+            }
+            var veggies = document.getElementsByName("veggies");
+            if (veggies[0].checked) {
+                ans[8] = (1)
+            } else if (veggies[1].checked) {
+                ans[8] = (0)
+            }
+            var heaveydrinker = document.getElementsByName("heaveydrinker");
+            if (heaveydrinker[0].checked) {
+                ans[9] = (1)
+            } else if (heaveydrinker[1].checked) {
+                ans[9] = (0)
+            }
+            var bmi = document.getElementsByName("bmi");
+            if (bmi[0].checked) {
+                ans[10] = (0)
+            } else if (bmi[1].checked) {
+                ans[10] = (1)
+            } else if (bmi[2].checked) {
+                ans[10] = (2)
+            } else if (bmi[3].checked) {
+                ans[10] = (3)
+            }
+
+            model = '';
+            var classification = document.getElementsByName("model");
+            if (classification[0].checked) {
+                model = ("Naive Bayes")
+            } else if (classification[1].checked) {
+                model = ("Decision Tree")
+            } else {
+                alert('NO Model choosen!')
+            }
+
+            alert(ans);
+            alert(model);
+        }
+    </Script>
+
+
+    <div class="container">
+        <button id="classify" onclick="select()">Classify</button>
         <table>
+            <tr>
+                <th>Features</th>
+                <th>Options</th>
+            </tr>
             <tr>
                 <th>
                     <p>HighBP:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="bp" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="bp" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
@@ -28,10 +142,10 @@
                     <p>HighChol:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="hcol" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="hcol" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
@@ -39,10 +153,10 @@
                     <p>CholCheck:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="colcheck" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="colcheck" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
@@ -50,10 +164,10 @@
                     <p>Smoker:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="smoker" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="smoker" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
@@ -61,10 +175,10 @@
                     <p>Stroke:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="stroke" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="stroke" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
@@ -72,10 +186,10 @@
                     <p>HeartDiseaseorAttack:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="heartattk" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="heartattk" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
@@ -83,10 +197,10 @@
                     <p>PhysActivity:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="phyact" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="phyact" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
@@ -94,10 +208,10 @@
                     <p>Fruits:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="fruits" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="fruits" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
@@ -105,10 +219,10 @@
                     <p>Veggies:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="veggies" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="veggies" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
@@ -116,21 +230,27 @@
                     <p>HvyAlcoholConsumption:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="heaveydrinker" value="1">   <label>Yes</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="heaveydrinker" value="0">   <label>No</label>
                 </th>
             </tr>
             <tr>
                 <th>
-                    <p>Sex:</p>
+                    <p>BMI:</p>
                 </th>
                 <th>
-                    <input type="radio" id="lin_reg" name="fav_language" value="HTML">   <label for="html">Yes</label>
+                    <input type="radio" name="bmi" value="1">   <label>Underweight</label>
                 </th>
                 <th>
-                    <input type="radio" id="near_nei" name="fav_language" value="CSS">   <label for="css">No</label>
+                    <input type="radio" name="bmi" value="0">   <label>Normal</label>
+                </th>
+                <th>
+                    <input type="radio" name="bmi" value="1">   <label>Overweight</label>
+                </th>
+                <th>
+                    <input type="radio" name="bmi" value="0">   <label>Obese</label>
                 </th>
             </tr>
         </table>
@@ -145,10 +265,10 @@
             <table>
                 <tr>
                     <th>
-                        <input type="radio" id="naive" name="fav_language" value="HTML">   <label for="html">Naive Bayes</label>
+                        <input type="radio" id="naive" name="model">   <label>Naive Bayes</label>
                     </th>
                     <th>
-                        <input type="radio" id="decision" name="fav_language" value="CSS">   <label for="css">Decision Tree</label>
+                        <input type="radio" id="decision" name="model">   <label>Decision Tree</label>
                     </th>
                 </tr>
                 <br><br>

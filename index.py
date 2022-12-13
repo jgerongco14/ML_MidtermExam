@@ -34,9 +34,6 @@ def test():
     if model_class == 'naive_bayes' :
         pred = naive_model.predict(ans)
     
-    
-  
-
     return render_template('result.html',answer= ans, class_model = model_class, predict=pred)
 
 

@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request
 # ERROR IMPORTS
-from sklearn.externals import joblib
+import joblib
 import numpy as np
 
 app = Flask(__name__)
@@ -32,9 +32,13 @@ def test():
 
     # DILI PA SURE
     if model_class == 'naive_bayes' :
-        pred = naive_model.predict(ans)
+         pred = naive_model.predict(ans)
     
     return render_template('result.html',answer= ans, class_model = model_class, predict=pred)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 
